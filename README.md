@@ -1,10 +1,15 @@
 # 🔓 Inyección SQL (SQLi) - Material Didáctico
 
 > **Objetivo educativo:** Comprender qué es la inyección SQL, cómo funciona y cómo prevenirla mediante ejemplos prácticos.
+
 > **Objetivo1:** Preparación del entorno de prueba :SQLite en memoria + Python : login.py scripting
+
 > **Objetivo2:** Desarrollo de las 2 caras de la moneda : 
+
 >               - un script Python + SQLite vulnerable ...
+
 >               - y otro seguro 
+
 >     practicarlos y extraer conclusiones.
 ---
 
@@ -57,7 +62,7 @@ Si la aplicación concatena tu respuesta directamente en código, ejecutará com
 
 ## Demostración práctica
 
-> PROXIMAMENTE EN SUS PANTALLAS
+>  En preparación ! PROXIMAMENTE EN SUS PANTALLAS :-)
 ---
 
 
@@ -122,25 +127,7 @@ user = session.query(Usuario).filter_by(username=username, password=password).fi
 
 ## Ejercicios propuestos
 
-### 🎓 Ejercicio 1: Identificar vulnerabilidades
-
-Analiza este código PHP y explica por qué es vulnerable:
-
-```php
-$id = $_GET['id'];
-$query = "SELECT * FROM productos WHERE id = $id";
-$result = mysqli_query($conn, $query);
-```
-
-**Tareas:**
-1. ¿Qué payload usarías para extraer datos de la tabla `usuarios`?
-2. Reescribe el código de forma segura usando `mysqli_prepare()`
-
----
-
-
-
-### 🎓 Ejercicio 2: Investigación
+### 🎓 Ejercicio 1: Investigación
 
 Busca información sobre un caso real de inyección SQL:
 
@@ -152,6 +139,14 @@ Busca información sobre un caso real de inyección SQL:
 
 **Sugerencias:** Sony PSN (2011), TalkTalk (2015), Equifax (2017)
 
+
+### 🎓 Ejercicio 2: (para la próxima semana)
+
+Familiarizarse con  la [ interacción  que facilita el script Python + SQLite de ejemplo](login.py)
+
+### 🎓 Ejercicio 3: (para la próxima semana)
+
+Identificar posibles vulnerabilidades ..(en preparación ;-))
 ---
 
 ## 📚 Referencias y recursos
