@@ -1,7 +1,11 @@
 # 🔓 Inyección SQL (SQLi) - Material Didáctico
 
 > **Objetivo educativo:** Comprender qué es la inyección SQL, cómo funciona y cómo prevenirla mediante ejemplos prácticos.
-
+> **Objetivo1:** Preparación del entorno de prueba :SQLite en memoria + Python : login.py scripting
+> **Objetivo2:** Desarrollo de las 2 caras de la moneda : 
+>               - un script Python + SQLite vulnerable ...
+>               - y otro seguro 
+>     practicarlos y extraer conclusiones.
 ---
 
 ## 📋 Índice
@@ -53,125 +57,9 @@ Si la aplicación concatena tu respuesta directamente en código, ejecutará com
 
 ## Demostración práctica
 
-### 📂 Archivos incluidos:
-
-| Archivo | Descripción |
-|---------|-------------|
-| `login_vulnerable.py` | ❌ Script **INSEGURO** con concatenación directa |
-| `login_seguro.py` | ✅ Script **SEGURO** con consultas parametrizadas |
-
-### 🚀 Ejecución:
-
-```bash
-# Script vulnerable
-python3 login_vulnerable.py
-
-# Script seguro
-python3 login_seguro.py
-```
-
+> PROXIMAMENTE EN SUS PANTALLAS
 ---
 
-## Comparativa: Vulnerable vs Seguro
-
-### ❌ Código VULNERABLE (concatenación)
-
-```python
-# ⚠️ PELIGRO: Los valores se insertan directamente en el string SQL
-username = input("Usuario: ")
-password = input("Contraseña: ")
-
-query = f"SELECT * FROM usuarios WHERE username = '{username}' AND password = '{password}'"
-cursor.execute(query)
-```
-
-**Problema:** Si el usuario introduce `admin' OR '1'='1`, la consulta se convierte en:
-
-```sql
-SELECT * FROM usuarios WHERE username = 'admin' OR '1'='1' AND password = 'cualquier_cosa'
-```
-
-Como `'1'='1'` siempre es TRUE, el `OR` hace que toda la condición sea TRUE → **login exitoso sin contraseña**.
-
----
-
-### ✅ Código SEGURO (consultas parametrizadas)
-
-```python
-# ✅ SEGURO: Los valores se pasan como parámetros separados
-username = input("Usuario: ")
-password = input("Contraseña: ")
-
-query = "SELECT * FROM usuarios WHERE username = ? AND password = ?"
-cursor.execute(query, (username, password))
-```
-
-**Protección:** Los placeholders (`?`) indican que ahí irán **datos**, no **código**. La librería escapa automáticamente los caracteres especiales.
-
-Si el usuario introduce `admin' OR '1'='1`, se busca literalmente un usuario con ese nombre (que no existe).
-
----
-
-## Técnicas de ataque comunes
-
-### 1️⃣ Bypass de autenticación con OR
-
-**Payload:** `admin' OR '1'='1`
-
-```sql
--- Consulta original
-SELECT * FROM usuarios WHERE username = 'admin' OR '1'='1' AND password = '...'
-
--- Resultado: Siempre TRUE, bypass exitoso
-```
-
----
-
-### 2️⃣ Comentarios SQL
-
-**Payload:** `admin'--`
-
-```sql
--- Consulta original
-SELECT * FROM usuarios WHERE username = 'admin'-- ' AND password = '...'
-
--- Todo después de -- es un comentario, se ignora la verificación de contraseña
-```
-
----
-
-### 3️⃣ UNION-based SQLi (extracción de datos)
-
-**Payload:** `' UNION SELECT username, password, 1 FROM usuarios--`
-
-```sql
--- Permite extraer datos de otras tablas
-SELECT * FROM productos WHERE id = '1' UNION SELECT username, password, 1 FROM usuarios--
-```
-
----
-
-### 4️⃣ Time-based Blind SQLi
-
-**Payload:** `' OR SLEEP(5)--`
-
-```sql
--- Si la página tarda 5 segundos, confirma que hay inyección SQL
-SELECT * FROM usuarios WHERE id = '1' OR SLEEP(5)--
-```
-
----
-
-### 5️⃣ Stacked queries (múltiples comandos)
-
-**Payload:** `'; DROP TABLE usuarios; --`
-
-```sql
--- Ejecuta múltiples comandos separados por ;
-SELECT * FROM productos WHERE id = '1'; DROP TABLE usuarios; --'
-```
-
----
 
 ## Prevención y buenas prácticas
 
@@ -191,13 +79,6 @@ cursor.execute("SELECT * FROM usuarios WHERE username = %s AND password = %s", (
 ```php
 $stmt = $pdo->prepare("SELECT * FROM usuarios WHERE username = :user AND password = :pwd");
 $stmt->execute(['user' => $username, 'pwd' => $password]);
-```
-
-**Java (JDBC):**
-```java
-PreparedStatement stmt = conn.prepareStatement("SELECT * FROM usuarios WHERE username = ? AND password = ?");
-stmt.setString(1, username);
-stmt.setString(2, password);
 ```
 
 ---
@@ -257,20 +138,9 @@ $result = mysqli_query($conn, $query);
 
 ---
 
-### 🎓 Ejercicio 2: Práctica con los scripts
 
-1. Ejecuta `login_vulnerable.py` e intenta:
-   - Login con credenciales correctas
-   - Bypass con `admin' OR '1'='1`
-   - Bypass con `admin'--`
 
-2. Ejecuta `login_seguro.py` con los mismos payloads
-   - ¿Por qué los ataques no funcionan?
-   - Consulta el [DEBUG] para ver cómo se procesan los parámetros
-
----
-
-### 🎓 Ejercicio 3: Investigación
+### 🎓 Ejercicio 2: Investigación
 
 Busca información sobre un caso real de inyección SQL:
 
@@ -281,16 +151,6 @@ Busca información sobre un caso real de inyección SQL:
 - **Consecuencias (multas, pérdida de confianza, etc.)**
 
 **Sugerencias:** Sony PSN (2011), TalkTalk (2015), Equifax (2017)
-
----
-
-### 🎓 Ejercicio 4: Laboratorio CTF
-
-Practica en entornos controlados:
-
-- [HackTheBox](https://www.hackthebox.com/) - Máquinas con SQLi
-- [PortSwigger Web Security Academy](https://portswigger.net/web-security/sql-injection) - Labs gratuitos
-- [DVWA (Damn Vulnerable Web Application)](https://github.com/digininja/DVWA) - Para montar localmente
 
 ---
 
