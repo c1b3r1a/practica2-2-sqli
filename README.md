@@ -1,5 +1,43 @@
 # 🎯 Objetivos de Aprendizaje de la práctica de SQLinjection
 
+## Tabla de contenidos
+
+- [🎯 Objetivos de Aprendizaje de la práctica de SQLinjection](#-objetivos-de-aprendizaje-de-la-práctica-de-sqlinjection)
+- [📋 Contexto: ¿Qué puede ocurrir si no tomamos las medidas adecuadas(como la parametrización de consultas) en nuestras bases de datps ?](#-contexto-qué-puede-ocurrir-si-no-tomamos-las-medidas-adecuadascomo-la-parametrización-de-consultas-en-nuestras-bases-de-datps-)
+- [🏗️ Descripción de la Práctica](#️-descripción-de-la-práctica)
+  - [Fase 1: Desarrollo del Prototipo (Blue Team)](#fase-1-desarrollo-del-prototipo-blue-team)
+  - [Fase 2: Ataque (Red Team)](#fase-2-ataque-red-team)
+  - [Fase 3: Defensa (Blue Team)](#fase-3-defensa-blue-team)
+  - [Fase 4: Rotación y Presentación](#fase-4-rotación-y-presentación)
+- [📁 Estructura de Entrega](#-estructura-de-entrega)
+- [🛠️ Requisitos Técnicos](#️-requisitos-técnicos)
+  - [Software necesario:](#software-necesario)
+  - [Conocimientos previos:](#conocimientos-previos)
+- [📝 Ejemplo Mínimo: Login Vulnerable vs Seguro](#-ejemplo-mínimo-login-vulnerable-vs-seguro)
+  - [Versión VULNERABLE (`app_vulnerable.py`):](#versión-vulnerable-app_vulnerablepy)
+  - [Versión SEGURA (`app_segura.py`):](#versión-segura-app_segurapy)
+- [🎯 Payloads de Ejemplo (Red Team)](#-payloads-de-ejemplo-red-team)
+  - [1. Bypass de Autenticación:](#1-bypass-de-autenticación)
+  - [2. Extracción de datos (UNION):](#2-extracción-de-datos-union)
+  - [3. Comentarios SQL:](#3-comentarios-sql)
+  - [4. Stacked queries (si el SGBD lo permite):](#4-stacked-queries-si-el-sgbd-lo-permite)
+  - [5. Boolean-based blind SQLi:](#5-boolean-based-blind-sqli)
+- [🛡️ Checklist de Seguridad (Blue Team)](#️-checklist-de-seguridad-blue-team)
+  - [Nivel 1: Básico (OBLIGATORIO)](#nivel-1-básico-obligatorio)
+  - [Nivel 2: Intermedio (RECOMENDADO)](#nivel-2-intermedio-recomendado)
+  - [Nivel 3: Avanzado (OPCIONAL)](#nivel-3-avanzado-opcional)
+- [📚 Recursos y Referencias](#-recursos-y-referencias)
+  - [Documentación:](#documentación)
+  - [Herramientas (solo para laboratorio autorizado):](#herramientas-solo-para-laboratorio-autorizado)
+  - [CTFs y práctica legal:](#ctfs-y-práctica-legal)
+- [⚖️ Nota Legal y Ética](#️-nota-legal-y-ética)
+- [🎓 Evaluación](#-evaluación)
+- [📅 Cronograma Sugerido](#-cronograma-sugerido)
+- [🤝 Formación de Equipos](#-formación-de-equipos)
+- [✅ Criterios de Éxito](#-criterios-de-éxito)
+- [💡 Consejos Finales](#-consejos-finales)
+
+
 Al finalizar esta práctica, el alumnado será capaz de:
 
 1. **Identificar** vulnerabilidades de inyección SQL en código Python + SQL
