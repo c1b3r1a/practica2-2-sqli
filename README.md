@@ -78,7 +78,8 @@ así [como las posibles contramedidas](https://owasp-uruguay.github.io/sqli-en-l
 
 ### Fase 1: Desarrollo del Prototipo (Blue Team)
 
-Cada equipo desarrollará un **prototipo de aplicación Python + SQLite** similar al proyecto del gimnasio, con:
+Cada equipo desarrollará un **prototipo de aplicación Python + SQLite** similar a alguno de los proyectos (el grupal, o el del blog corporativo, o de otra temática que tú
+elijas.... Te hago más propuestas, un poco más abajo ) del otro módulo (SGBD) con, por ejemplo, como muestra:
 
 1. **Base de datos SQLite** con al menos 3 tablas relacionadas
 2. **Script Python** que permita:
@@ -91,7 +92,7 @@ Cada equipo desarrollará un **prototipo de aplicación Python + SQLite** simila
    - `app_vulnerable.py` → Usa concatenación directa (f-strings, format, +)
    - `app_segura.py` → Usa consultas parametrizadas (`?` o `%s`)
 
-4. **Datos de prueba:** Usar Faker para poblar la BD con registros realistas
+4. **Datos de prueba:** Usar Faker para poblar la BD con registros realistas. A no ser que prefieras hacerla manualmente...
 
 **Temáticas sugeridas:**
 - Sistema de reservas (hotel, restaurante, cine)
@@ -99,6 +100,9 @@ Cada equipo desarrollará un **prototipo de aplicación Python + SQLite** simila
 - Biblioteca (libros, préstamos, usuarios)
 - Plataforma educativa (alumnos, cursos, notas)
 - Red social básica (usuarios, posts, comentarios)
+- el proyecto grupal (SGBD)
+- ...o el del blog corporativo (SGBD)
+- u ¿otras ?
 
 ---
 
@@ -151,7 +155,7 @@ Cada equipo recibe el **informe de ataque** sobre su `app_vulnerable.py` y debe:
 
 ---
 
-## 📁 Estructura de Entrega
+## 📁 Estructura de Entrega ejemplar :
 
 ```
 equipo_[NombreEquipo]/
@@ -168,6 +172,8 @@ equipo_[NombreEquipo]/
     ├── exploit_data_extraction.png
     └── app_segura_resistente.png
 ```
+
+Mejor en un repositorio en Github ! 
 
 ---
 
@@ -389,8 +395,8 @@ Un equipo tendrá éxito si:
 
 ## 💡 Consejos Finales
 
-- **No reinventes la rueda:** Inspírate en el proyecto del gimnasio y adapta la estructura
-- **Usa Faker para poblar datos:** Aprovecha lo aprendido en Práctica 2.1
+- **No reinventes la rueda:** Inspírate en el proyecto en el que te sientas más cómodo y adapta la estructura
+- **Usa Faker para poblar datos:** si te resulta más práctico que introducirlos manualmente.
 - **Documenta mientras trabajas:** No dejes la documentación para el final
 - **Colabora con otros equipos:** El objetivo es aprender, no "ganar"
 - **Pregunta si tienes dudas:** Mejor preguntar que cometer errores de seguridad
