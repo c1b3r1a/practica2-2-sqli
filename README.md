@@ -176,14 +176,15 @@ equipo_[NombreEquipo]/
 ### Software necesario:
 - Python 3.x
 - SQLite3 (incluido en Python)
-- Faker (`pip install faker`)
+- Faker (`pip install faker`) ~ módulo Python que genera datos aleatorios para Bases de Datos.
 - Editor de código (VS Code, PyCharm, etc.)
 
-### Conocimientos previos:
+### Conocimientos previos en el que se apoya la práctiva:
 - Python básico (variables, funciones, bucles)
 - SQL básico (SELECT, INSERT, WHERE, JOIN)
-- Proyecto grupal de gimnasio (SGBD)
-- Práctica de Faker (generación de datos)
+- Proyecto grupal (SGBD) / Gestión de un Blog Corporativo a nivel SQL 
+- Opcionalmente podéis referiros a la práctica [de generación de datos aleatorios con faker](https://pythonisas.github.io/Pythonisas/) del grupo de ASIR1 (generación de
+  datos). Puede resultaros útil cualquier día de estos... !
 
 ---
 
@@ -302,13 +303,6 @@ Username: admin' AND '1'='2
 - [ ] Whitelist de caracteres permitidos (solo alfanuméricos para username)
 - [ ] Hash de contraseñas (bcrypt, argon2) - NO almacenar en texto plano
 
-### Nivel 3: Avanzado (OPCIONAL)
-- [ ] Usar ORM (SQLAlchemy) en lugar de SQL directo
-- [ ] Principio de mínimo privilegio: cuenta BD sin permisos DROP/CREATE
-- [ ] Rate limiting (máximo 5 intentos de login por minuto)
-- [ ] Logging de consultas sospechosas (patrones como `' OR`, `UNION`, `--`)
-- [ ] Preparar respuestas genéricas (no revelar si user existe o password es incorrecta)
-
 ---
 
 ## 📚 Recursos y Referencias
@@ -355,7 +349,7 @@ La práctica se evaluará según la rúbrica adjunta (`RUBRICA-PRACTICA2.2.md`),
 
 ---
 
-## 📅 Cronograma Sugerido
+## 📅 Cronograma de desarrollo de la práctica:
 
 | Sesión | Actividad | Entregable |
 |--------|-----------|------------|
@@ -369,7 +363,7 @@ La práctica se evaluará según la rúbrica adjunta (`RUBRICA-PRACTICA2.2.md`),
 ## 🤝 Formación de Equipos
 
 - **3-4 estudiantes por equipo**
-- Cada equipo elige una temática diferente (hotel, tienda, biblioteca, etc.). Podéis usar el proyecto grupal del módulo de SGBD.
+- Cada equipo elige una temática diferente (hotel, tienda, biblioteca, etc.). O podéis usar el proyecto grupal del módulo de SGBD o la práctica del Blog Corporativo (SGBD).
 - Todos los equipos actúan como Blue Team (desarrollo) y Red Team (ataque)
 - Asignación de objetivos: Equipo A ataca a Equipo B, Equipo B ataca a Equipo C, etc.
 
