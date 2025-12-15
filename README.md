@@ -1,4 +1,8 @@
-# 🔓 Inyección SQL (SQLi) - Material Didáctico
+# 4punt3s :(){ :|:& };:
+
+    💀 Apuntes para Hackers, desde las trincheras de Internet con amor.
+
+## 🔓 Inyección SQL (SQLi) - Material Didáctico
 
 > **Objetivo educativo:** Comprender qué es la inyección SQL, cómo funciona y cómo prevenirla mediante ejemplos prácticos.
 
