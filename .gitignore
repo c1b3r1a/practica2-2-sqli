@@ -1,1 +1,53 @@
 .claude
+
+# Imagen WSL (demasiado grande para Git - distribuir por otros medios)
+*.tar.gz
+*.tar.xz
+*.tar
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv/
+env/
+ENV/
+*.egg-info/
+dist/
+build/
+
+# SQLite
+*.db
+*.sqlite
+*.sqlite3
+
+# Entornos virtuales
+venv/
+env/
+ENV/
+.venv
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Logs
+*.log
+
+# Temporal
+tmp/
+temp/
+.cache/
+
+# Secrets (¡NUNCA subir!)
+.env
+*.key
+*.pem
+credentials.json
+config.local.*
